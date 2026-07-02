@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Checkpoint</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="screen">
+    <section class="topbar">
+      <a href="/index.html" class="small-link">← Menu</a>
+      <span id="connectionStatus" class="status-pill">Demo</span>
+    </section>
+
+    <section class="card input-card">
+      <p class="eyebrow">Checkpoint</p>
+      <h1 id="pageTitle">Checkpoint</h1>
+      <div id="display" class="number-display">&nbsp;</div>
+
+      <div class="keypad" aria-label="number pad">
+        <button data-key="7">7</button>
+        <button data-key="8">8</button>
+        <button data-key="9">9</button>
+        <button data-key="4">4</button>
+        <button data-key="5">5</button>
+        <button data-key="6">6</button>
+        <button data-key="1">1</button>
+        <button data-key="2">2</button>
+        <button data-key="3">3</button>
+        <button data-action="backspace" class="secondary">⌫</button>
+        <button data-key="0">0</button>
+        <button data-action="submit" class="enter">ENTER</button>
+      </div>
+
+      <div id="message" class="message"></div>
+    </section>
+
+    <section class="card recent-card">
+      <h2>Last entries</h2>
+      <div id="recentList" class="recent-list"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

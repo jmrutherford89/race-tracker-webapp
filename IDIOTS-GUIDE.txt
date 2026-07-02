@@ -1,0 +1,248 @@
+IDIOT'S GUIDE: RACE TRACKER TEST APP
+
+WHAT THIS IS
+
+This is a simple web app for race marshals.
+
+It gives them big phone-friendly buttons:
+- Stanage checkpoint input
+- Hathersage checkpoint input
+- Finish timer button
+- Finish recorder number pad
+
+At first it works in DEMO MODE.
+That means it records entries on the phone only.
+
+Later, you connect it to Google Sheets so every entry appears in your organiser spreadsheet.
+
+
+PART 1 - TEST THE APP ON YOUR COMPUTER
+
+1. Unzip the folder called race-tracker-webapp.zip.
+
+2. Open the folder.
+
+3. Double-click index.html.
+
+4. Your browser should open the app menu.
+
+5. Click Stanage checkpoint.
+
+6. Tap/type a runner number, for example 147.
+
+7. Press ENTER.
+
+8. You should see it appear in Last entries.
+
+That means the interface works.
+
+
+PART 2 - UPLOAD IT TO YOUR WEBSITE
+
+You need to upload the files inside the folder to your website.
+
+The files are:
+- index.html
+- checkpoint.html
+- timer.html
+- finish.html
+- recent.html
+- settings.html
+- style.css
+- app.js
+
+You can upload them using your website file manager or FTP.
+
+Put them in a folder called something simple, for example:
+
+/race/
+
+Then your app should be available at something like:
+
+https://yourwebsite.com/race/
+
+Test these pages:
+
+https://yourwebsite.com/race/
+https://yourwebsite.com/race/checkpoint.html?location=Stanage
+https://yourwebsite.com/race/checkpoint.html?location=Hathersage
+https://yourwebsite.com/race/timer.html
+https://yourwebsite.com/race/finish.html
+
+
+PART 3 - CONNECT IT TO GOOGLE SHEETS
+
+1. Open the Google Sheet you want to use as the race backend.
+
+2. Go to:
+
+Extensions > Apps Script
+
+3. Delete any default code.
+
+4. Open the file called google-apps-script.js.
+
+5. Copy all the code.
+
+6. Paste it into Apps Script.
+
+7. Press Save.
+
+8. Go to:
+
+Deploy > New deployment
+
+9. Click the cog/settings icon and choose:
+
+Web app
+
+10. Set:
+
+Execute as: Me
+Who has access: Anyone
+
+11. Click Deploy.
+
+12. Google may ask you to authorise it.
+
+13. Approve the permissions.
+
+14. Copy the Web App URL.
+
+It will look something like:
+
+https://script.google.com/macros/s/AKfycbxxxxxxxxxxxx/exec
+
+
+PART 4 - PUT THE GOOGLE SHEET URL INTO THE WEB APP
+
+1. Open your race app on your website.
+
+Example:
+
+https://yourwebsite.com/race/
+
+2. Click Settings.
+
+3. Paste the Google Apps Script Web App URL.
+
+4. Press Save settings.
+
+5. Go back to the menu.
+
+6. Open Stanage checkpoint.
+
+7. Enter a test number.
+
+8. Go back to your Google Sheet.
+
+You should now see new sheets appear:
+
+- Checkpoint Log
+- Finish Times
+- Finish Recorder
+
+Your test entry should appear there.
+
+
+PART 5 - HOW TO USE ON RACE DAY
+
+ORGANISER
+
+Open the Google Sheet.
+
+This is your backend/control room.
+You watch entries arrive live.
+
+
+STANAGE MARSHAL
+
+Send them this URL:
+
+https://yourwebsite.com/race/checkpoint.html?location=Stanage
+
+They tap bib numbers and press ENTER.
+
+
+HATHERSAGE MARSHAL
+
+Send them this URL:
+
+https://yourwebsite.com/race/checkpoint.html?location=Hathersage
+
+
+FINISH TIMER VOLUNTEER
+
+Send them this URL:
+
+https://yourwebsite.com/race/timer.html
+
+They only press RUNNER FINISHED when someone crosses the line.
+
+
+FINISH RECORDER VOLUNTEER
+
+Send them this URL:
+
+https://yourwebsite.com/race/finish.html
+
+They enter bib numbers in finishing order.
+
+
+IMPORTANT NOTES
+
+1. The web app must be opened on the phone before the race.
+
+2. The Settings URL is saved per device.
+So each marshal phone needs the Google Apps Script URL saved once.
+
+3. Mobile signal is still needed for live updates to Google Sheets.
+
+4. If signal drops, the page will still show local recent entries, but the current version does not yet fully sync failed entries later.
+
+5. Test this with fake numbers before using it properly.
+
+
+WHAT THIS VERSION DOES
+
+It sends these into Google Sheets:
+
+Checkpoint Log:
+- received time
+- clock time
+- checkpoint name
+- bib number
+- device timestamp
+
+Finish Times:
+- received time
+- clock time
+- device timestamp
+
+Finish Recorder:
+- received time
+- clock time
+- bib number
+- device timestamp
+
+
+WHAT WE WOULD ADD NEXT
+
+Next improvements:
+- calculate race time from official start time
+- link bib numbers to names
+- live missing runner dashboard
+- automatic finish time + bib matching
+- category results
+- offline queue and retry
+- password/PIN protection
+
+
+VERCEL FIX NOTES
+----------------
+This version includes:
+- vercel.json to stop Vercel rewriting .html pages
+- absolute /app.js and /style.css links
+- robust JavaScript page detection if Vercel still shows clean URLs
+
+Upload the CONTENTS of this folder to GitHub/Vercel, not the outer ZIP itself.

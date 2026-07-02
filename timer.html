@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Finish Timer</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="screen timer-screen">
+    <section class="topbar">
+      <a href="/index.html" class="small-link">← Menu</a>
+      <span id="connectionStatus" class="status-pill">Demo</span>
+    </section>
+
+    <section class="card input-card">
+      <p class="eyebrow">Finish line</p>
+      <h1>Finish timer</h1>
+      <p class="muted">Volunteer 1 taps this button every time a runner crosses the line.</p>
+      <button id="finishButton" class="finish-button">RUNNER FINISHED</button>
+      <div id="message" class="message"></div>
+    </section>
+
+    <section class="card recent-card">
+      <h2>Last finish times</h2>
+      <div id="recentList" class="recent-list"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
